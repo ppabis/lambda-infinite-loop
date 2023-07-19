@@ -23,3 +23,9 @@ resource "aws_lambda_event_source_mapping" "recursive-function" {
   function_name    = aws_lambda_function.recursive-function.function_name
   batch_size       = 1
 }
+
+resource "aws_lambda_event_source_mapping" "recursive-function-dlq" {
+  event_source_arn = aws_sqs_queue.dead-letter-queue.arn
+  function_name    = aws_lambda_function.recursive-function.function_name
+  batch_size       = 1
+}

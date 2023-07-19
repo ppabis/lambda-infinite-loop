@@ -17,7 +17,7 @@ def handler(event, context):
     if counterId > counter:
       counter = counterId
   
-  if counter > 50:
+  if counter > 100:
     print("Counter is %d, exiting" % counter)
     return {
       'statusCode': 200,

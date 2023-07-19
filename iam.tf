@@ -13,7 +13,10 @@ resource "aws_iam_role" "lambda-role" {
 data "aws_iam_policy_document" "sqs" {
   statement {
     effect = "Allow"
-    resources = [ aws_sqs_queue.queue.arn ]
+    resources = [ 
+      aws_sqs_queue.queue.arn,
+      aws_sqs_queue.dead-letter-queue.arn
+    ]
     actions = [
       "sqs:SendMessage",
       "sqs:ReceiveMessage",
